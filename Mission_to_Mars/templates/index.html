@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hot Finds</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
+    </div>
+
+    <!-- Scraping results -->
+    <div>
+        <ul style="list-style: none;">
+          <li>{{mars_latest_info.news_title}}</li>
+          <li>{{mars_latest_info.teaser}}</li>
+          <li><img src= {{mars_latest_info.featured_picture_url}} alt="picture"></li>
+          <li>{{mars_latest_info.mars_weather_url}}</li>
+          <ul>
+              <li>title: {{mars_latest_info.titles[0]}}</li>
+              <li>link: {{mars_latest_info.links[0]}}</li>
+          </ul>
+        </ul>
+        {{mars_latest_info.mars_facts_table}}
+      </div>
+
+  </div>
+</body>
+
+</html>
