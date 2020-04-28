@@ -5,34 +5,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hot Finds</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Mission to Mars</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <div class="container">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            
+                <h2 class="navbar-brand" href="#" >Mission to Mars</h2>
+            
+        </div>
 
-    <div class="jumbotron text-center">
-      <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
     </div>
 
+    <div class="jumbotron">
+        <div class="container">
+            <p class="h2">Latest News:</p>
+            <p class="h3">{{mars_latest_info.news_title}}</p>
+            <p class="lead">{{mars_latest_info.teaser}}</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape »</a>
+            </p>
+        </div>
+    </div>
+
+  <div class="container">
     <!-- Scraping results -->
-    <div>
-        <ul style="list-style: none;">
-          <li>{{mars_latest_info.news_title}}</li>
-          <li>{{mars_latest_info.teaser}}</li>
-          <li><img src= {{mars_latest_info.featured_picture_url}} alt="picture"></li>
-          <li>{{mars_latest_info.mars_weather_url}}</li>
-          <ul>
-              <li>title: {{mars_latest_info.titles[0]}}</li>
-              <li>link: {{mars_latest_info.links[0]}}</li>
-          </ul>
-        </ul>
-        {{mars_latest_info.mars_facts_table}}
-      </div>
+    <div class="row">
+        <div class="col-md-4">
+            <figure class="figure" style="float: left;">
+                <img src={{mars_latest_info.featured_picture_url}}
+                    alt="Mars Featured Image"
+                    style="width: 300px; margin-right: 1em;"
+                    class="img-fluid">
+                <figcaption class="figure-caption">Featured image: https://www.jpl.nasa.gov</figcaption>
+            </figure>
+        </div>
+        
+        <div class="col-md-8" style="align-self: center;">
+            <p class="h5">Mars Weather:</p>
+            <p>{{mars_latest_info.mars_weather_url}}</p>
+
+            <p class="h5">Mars Facts:</p>
+            <div class="container-fluid">
+                {{mars_latest_info.mars_facts_table | safe}}
+            </div>
+            
+        </div>
+    </div>
+
+    <p class="h4" style="text-align: center;">Mars Hemispheres:</p>
+    <div class="row">
+        <div class="col-md-6">
+            <figure class="figure" style="float: left;">
+                <img src="{{mars_latest_info.links[0]}}"
+                    alt="Cerberus Hemisphere"
+                    class="img-fluid">
+                <figcaption class="figure-caption">{{mars_latest_info.titles[0]}}</figcaption>
+            </figure>
+        </div>
+        <div class="col-md-6">
+            <figure class="figure" style="float: left;">
+                <img src="{{mars_latest_info.links[1]}}"
+                    alt="Cerberus Hemisphere"
+                    class="img-fluid">
+                <figcaption class="figure-caption">{{mars_latest_info.titles[1]}}</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <figure class="figure" style="float: left;">
+                <img src="{{mars_latest_info.links[2]}}"
+                    alt="Cerberus Hemisphere"
+                    class="img-fluid">
+                <figcaption class="figure-caption">{{mars_latest_info.titles[2]}}</figcaption>
+            </figure>
+        </div>
+        <div class="col-md-6">
+            <figure class="figure" style="float: left;">
+                <img src="{{mars_latest_info.links[3]}}"
+                    alt="Cerberus Hemisphere"
+                    class="img-fluid">
+                <figcaption class="figure-caption">{{mars_latest_info.titles[3]}}</figcaption>
+            </figure>
+        </div>
+    </div>
+
 
   </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

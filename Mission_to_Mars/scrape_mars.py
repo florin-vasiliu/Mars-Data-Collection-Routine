@@ -101,7 +101,7 @@ class Scrape_Mars_data():
         self.browser.visit(mars_facts_url)
         wait_to_load(self.browser)
         tables = pd.read_html(self.browser.html)
-        mars_facts_table = tables[0].set_index(0)
+        mars_facts_table = tables[0].rename(columns={0:"Description",1:"Value"}).set_index("Description")
         return {"mars_facts_table": mars_facts_table.to_html()}
 
     def get_hemisphere_pictures(self, hemispheres_url=hemispheres_url):
@@ -113,11 +113,15 @@ class Scrape_Mars_data():
         # get links for the emisphere pictures
         hemisphere_image_links = []
         for title in hemisphere_image_names:
+            #click on each link
             self.browser.click_link_by_partial_text(title)
             wait_to_load(self.browser)
             hemisphere_soup = bs(self.browser.html, 'html.parser')
-            list_tags = hemisphere_soup.find_all('li')
-            hemisphere_image_links.append(list_tags[1].a["href"])
+            link_elements = urlparse(self.browser.url)
+            image_base_link=f"{link_elements.scheme}://{link_elements.netloc}"
+            relative_image_link = hemisphere_soup.find('img',class_="wide-image")["src"]
+            image_link=image_base_link+relative_image_link
+            hemisphere_image_links.append(image_link)
             self.browser.visit(hemispheres_url)
             wait_to_load(self.browser)
 
@@ -155,6 +159,7 @@ if __name__ == "__main__":
 #    print(scrape_instance.get_featured_image())
 #    print(scrape_instance.get_mars_weather())
 #    print(scrape_instance.get_mars_facts())
+#    scrape_instance = Scrape_Mars_data()
 #    print(scrape_instance.get_hemisphere_pictures())
     scrape_and_store()
 
