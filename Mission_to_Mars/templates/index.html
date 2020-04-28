@@ -34,21 +34,20 @@
 
   <div class="container">
     <!-- Scraping results -->
+    <p class="h5">Mars Weather:</p>
+    <p>{{mars_latest_info.mars_weather_url}}</p>
+    <hr>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <figure class="figure" style="float: left;">
                 <img src={{mars_latest_info.featured_picture_url}}
                     alt="Mars Featured Image"
-                    style="width: 300px; margin-right: 1em;"
                     class="img-fluid">
                 <figcaption class="figure-caption">Featured image: https://www.jpl.nasa.gov</figcaption>
             </figure>
         </div>
         
-        <div class="col-md-8" style="align-self: center;">
-            <p class="h5">Mars Weather:</p>
-            <p>{{mars_latest_info.mars_weather_url}}</p>
-
+        <div class="col-md-6" >
             <p class="h5">Mars Facts:</p>
             <div class="container-fluid">
                 {{mars_latest_info.mars_facts_table | safe}}
@@ -56,7 +55,7 @@
             
         </div>
     </div>
-
+    <hr>
     <p class="h4" style="text-align: center;">Mars Hemispheres:</p>
     <div class="row">
         <div class="col-md-6">

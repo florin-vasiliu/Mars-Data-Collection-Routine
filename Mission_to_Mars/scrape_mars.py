@@ -50,29 +50,17 @@ class Scrape_Mars_data():
         self.browser.visit(mars_images_url)
         wait_to_load(self.browser)
         picture_soup = bs(self.browser.html, 'html.parser')
-        #get all list tags
-        picture_list_tags = picture_soup.find_all('li', class_="slide")
-        #Determine the picture latest date
-        try:
-            picture_dates=[]
-            for picture_list_tag in picture_list_tags:
-                picture_dates = picture_dates + [picture_list_tag.find('h3', class_="release_date").text]
-        except:
-            pass
-        picture_latest_date = max(pd.to_datetime(picture_dates))
-        try:
-            for picture_list_tag in picture_list_tags:
-                if pd.to_datetime(picture_list_tag.find('h3', class_="release_date").text) == picture_latest_date:
-                    # get picture relative link
-                    picture_relative_link = picture_list_tag.a["data-fancybox-href"]
-                    #get picture base link
-                    link_elements = urlparse(mars_images_url)
-                    picture_base_link=f"{link_elements.scheme}://{link_elements.netloc}"
-                    #set picture full link
-                    picture_full_link = picture_base_link+picture_relative_link
-                    break
-        except:
-            pass
+        #Determine structure of the article list
+        picture_location = picture_soup.find_all('article', class_="carousel_item")
+        #get picture partial link
+        picture_partial_link = picture_location[0]['style'].lstrip("'background-image: url(")
+        picture_partial_link = picture_partial_link.rstrip("'');")
+        #get picture base link
+        link_elements = urlparse(self.browser.url)
+        picture_base_link=f"{link_elements.scheme}://{link_elements.netloc}"
+        #get final link
+        picture_full_link = picture_base_link + picture_partial_link
+
         return {"featured_picture_url" : picture_full_link}
 
     def get_mars_weather(self, mars_weather_url=mars_weather_url):
