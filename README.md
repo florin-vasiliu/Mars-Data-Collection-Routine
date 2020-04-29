@@ -1,10 +1,16 @@
 # Web Scraping Challenge
 
-This project was completed in 3 stages:
+This project was completed in 4 stages:
 
 1. Development of the web scraping code where all the debugging was done in jupyter notebook (see <a href="Mission_to_Mars/mission_to_mars.ipynb">mission_to_mars.ipynb</a>)
-2. OOP structuration of the scraping code (see <a href="Mission_to_Mars/scrape_mars.py">scrape_mars.py</a>) and development of the flask app (see <a href="Mission_to_Mars/app.py">app.py</a>)
-3. Development of the web page for rendering (see <a href="Mission_to_Mars/templates/index.html">index.html</a>). The elements of the page can be seen below:
+2. OOP structuration of the scraping code and recording of results into a Mongo db (see <a href="Mission_to_Mars/scrape_mars.py">scrape_mars.py</a>) 
+
+<img src=Mission_to_Mars/screenshots/MongoDB.PNG >|
+:--------------------------------------:|
+MongoDB document structure|
+
+3. Development of the flask app (see <a href="Mission_to_Mars/app.py">app.py</a>)
+4. Development of the web page for rendering (see <a href="Mission_to_Mars/templates/index.html">index.html</a>). The elements of the page can be seen below:
 
 <img src=Mission_to_Mars/screenshots/Header.PNG >|
 :--------------------------------------:|
