@@ -1,6 +1,12 @@
-# Web Scraping Challenge
+# Mission to Mars
 
-This project was completed in 4 stages:
+## Objective
+The objective is to build a web application that scrapes various websites for data related to the Mission to Mars, and displays the information in a single HTML page.
+
+
+## Project Development
+
+The project was completed in 4 stages:
 
 1. Development of the web scraping code where all the debugging was done in jupyter notebook (see <a href="Mission_to_Mars/mission_to_mars.ipynb">mission_to_mars.ipynb</a>)
 
